@@ -47,6 +47,7 @@ GEM
       rake (>= 0.8.7)
     arel (5.0.0)
     atomic (1.1.16)
+    bcrypt-ruby (3.1.2)
     builder (3.2.2)
     capybara (2.2.1)
       mime-types (>= 1.16)
@@ -193,6 +194,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate (>= 2.5.0)
+  bcrypt-ruby
   capybara (>= 2.2.0)
   capybara-webkit
   coffee-rails (~> 4.0.0)

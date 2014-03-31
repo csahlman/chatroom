@@ -9,7 +9,12 @@
             <input type="text" placeholder="Search" class="form-control search-btn ">
           </form>
         </div>
-        <div class="group-rom">
+        <div class="group-rom" ng-repeat="message in messages">
+          <div class="first-part"></div>
+          <div class="second-part">{{message.body}}</div>
+          <div class="third-part"></div>
+        </div>
+        <!-- <div class="group-rom">
           <div class="first-part odd">Sam Soffes</div>
           <div class="second-part">Hi Mark, have a minute?</div>
           <div class="third-part">12:30</div>
@@ -44,10 +49,10 @@
             <div class="first-part odd">Sam Soffes</div>
             <div class="second-part">Thanks!!</div>
             <div class="third-part">12:33</div>
-          </div>
+          </div> -->
           <footer>
             <div class="chat-txt">
-              <input type="text" ng-model="message.body" class="form-control">
+              <input type="text" ng-model="newMessage.body" class="form-control">
             </div>
             <div class="btn-group hidden-sm hidden-xs">
               <button type="button" class="btn btn-white"><i class="fa fa-meh-o"></i></button>
@@ -108,15 +113,6 @@
     </section><!--/wrapper -->
   </section><!-- /MAIN CONTENT -->
 
-  <!--main content end-->
-  <!--footer start-->
-  <footer class="site-footer">
-    <div class="text-center">
-      2014 - Alvarez.is
-      <a href="chat_room.html#" class="go-top">
-        <i class="fa fa-angle-up"></i>
-      </a>
-    </div>
-  </footer>
+
   <!--footer end-->
 </section>

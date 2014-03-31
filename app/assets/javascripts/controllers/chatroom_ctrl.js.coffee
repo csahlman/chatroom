@@ -1,10 +1,18 @@
 angular.module('chatroom').controller 'ChatroomCtrl', ['$scope', '$http', '$timeout', ($scope, $http, 
   $timeout) ->
 
-  $scope.message = {}
+  $scope.messages = []
+
+  $scope.newMessage = {}
+
+  new_chatroom = $scope.dispatcher.subscribe('new_chatroom')
+
+  new_chatroom.bind 'messages.create', (message) ->
+    $scope.messages.push message
+    $scope.$apply()
 
   $scope.createMessage = ->
-    $scope.dispatcher.trigger('chatroom.messages.create', $scope.message, ->
-      console.log 'success'
-    )
+    new_chatroom.trigger('messages.create', $scope.newMessage)
+    $scope.newMessage = {}
+
 ]

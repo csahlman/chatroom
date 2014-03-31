@@ -1,0 +1,5 @@
+<% if user_signed_in? %>
+  <div ng-model="user" ng-init="user(<%= render(template: '/api/sessions/create.json.jbuilder') %>)"></div>
+<% else %>
+  <div ng-model="user" ng-init="user(null)"></div>
+<% end %>

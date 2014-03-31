@@ -47,6 +47,8 @@ gem "font-awesome-rails"
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'bcrypt-ruby'
+
 gem 'websocket-rails'
 
 group :test, :development do 
