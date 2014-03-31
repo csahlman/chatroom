@@ -47,6 +47,8 @@ gem "font-awesome-rails"
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'websocket-rails'
+
 group :test, :development do 
   gem 'sqlite3'
   gem 'rspec-rails', git: 'git@github.com:rspec/rspec-rails.git'

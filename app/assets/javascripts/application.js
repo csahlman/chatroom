@@ -11,5 +11,7 @@
 // about supported directives.
 //
 //= require vendor/angular-bootstrap
+//= require websocket_rails/main
 //= require chatroom
 //= require_tree ./controllers
+

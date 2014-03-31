@@ -67,6 +67,8 @@ GEM
     daemons (1.1.9)
     database_cleaner (1.2.0)
     diff-lcs (1.2.5)
+    em-synchrony (1.0.3)
+      eventmachine (>= 1.0.0.beta.1)
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (2.0.2)
@@ -77,9 +79,13 @@ GEM
       railties (>= 3.0.0)
     faker (1.3.0)
       i18n (~> 0.5)
+    faye-websocket (0.7.2)
+      eventmachine (>= 0.12.0)
+      websocket-driver (>= 0.3.1)
     font-awesome-rails (4.0.3.1)
       railties (>= 3.2, < 5.0)
     hike (1.2.3)
+    hiredis (0.5.0)
     i18n (0.6.9)
     jbuilder (1.5.3)
       activesupport (>= 3.0.0)
@@ -117,6 +123,9 @@ GEM
     rake (10.2.2)
     rdoc (4.1.1)
       json (~> 1.4)
+    redis (3.0.7)
+    redis-objects (0.9.1)
+      redis (>= 3.0.2)
     rspec-collection_matchers (0.0.3)
       rspec-expectations (>= 2.99.0.beta1)
     rspec-core (3.0.0.beta2)
@@ -166,6 +175,16 @@ GEM
     uglifier (2.5.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    websocket-driver (0.3.2)
+    websocket-rails (0.7.0)
+      em-synchrony
+      faye-websocket
+      hiredis
+      rack
+      rails
+      redis
+      redis-objects
+      thin
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
@@ -193,3 +212,4 @@ DEPENDENCIES
   thin
   timecop
   uglifier (>= 1.3.0)
+  websocket-rails
