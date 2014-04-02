@@ -5,7 +5,7 @@ class MessagesController < WebsocketRails::BaseController
     @message = current_user.messages.create! message
     response = {
       body: @message.body,
-      # user: current_user.name,
+      user_name: current_user.name,
       created_at: @message.created_at
     }
     trigger_success response

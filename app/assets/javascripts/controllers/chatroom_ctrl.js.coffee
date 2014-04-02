@@ -1,5 +1,5 @@
-angular.module('chatroom').controller 'ChatroomCtrl', ['$scope', '$http', '$timeout', ($scope, $http, 
-  $timeout) ->
+angular.module('chatroom').controller 'ChatroomCtrl', ['$scope', '$http', '$timeout', '$interval', ($scope, $http, 
+  $timeout, $interval) ->
 
   $scope.chatters = []
 
@@ -16,17 +16,13 @@ angular.module('chatroom').controller 'ChatroomCtrl', ['$scope', '$http', '$time
 
   $scope.dispatcher.trigger 'chatroom.get_users', { room: 'new_chatroom' }
 
-  new_chatroom.bind 'new_user', (data) ->
-    $scope.chatters.push data
+  new_chatroom.bind 'user_list', (data) ->
+    $scope.chatters = data
     $scope.$safeApply()
 
-  new_chatroom.bind 'user_left_room', (data) ->
-    console.log data
-    result = _.find $scope.chatters, (value) ->    
-      data.name == value.name
-    $scope.chatters.splice($scope.chatters.indexOf(result), 1) unless $scope.chatters.indexOf(result) == -1
-    console.log $scope.chatters
-    $scope.$safeApply()
+  # userListFetcher = $interval ->
+  #   new_chatroom.trigger 'chatroom.get_users'
+  # , 5000
    
 
   new_chatroom.bind 'messages.create', (message) ->

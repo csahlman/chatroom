@@ -1,6 +1,6 @@
 WebsocketRails::EventMap.describe do
   subscribe :client_connected, to: SocketstreamController, with_method: :client_connected
-  subscribe :client_disconnected, to: SocketstreamController, with_method: :client_disconnected
+  subscribe :client_disconnected, 'user_lists#client_disconnted'
 
 
   namespace :chatroom do 

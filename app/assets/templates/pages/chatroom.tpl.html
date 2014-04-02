@@ -9,10 +9,12 @@
             <input type="text" placeholder="Search" class="form-control search-btn ">
           </form>
         </div>
-        <div class="group-rom" ng-repeat="message in messages">
-          <div class="first-part">{{message.user_name}}</div>
-          <div class="second-part">{{message.body}}</div>
-          <div class="third-part">{{message.created_at | date:'shortTime'}}</div>
+        <div class="group-rom" style="min-height: 500px;">
+          <div ng-repeat="message in messages">
+            <div class="first-part">{{message.user_name}}</div>
+            <div class="second-part">{{message.body}}</div>
+            <div class="third-part">{{message.created_at | date:'shortTime'}}</div>
+          </div>
         </div>
           <footer>
             <div class="chat-txt">
