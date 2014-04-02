@@ -20,6 +20,13 @@ angular.module('chatroom').controller 'ChatroomCtrl', ['$scope', '$http', '$time
     $scope.chatters = data
     $scope.$safeApply()
 
+  new_chatroom.bind 'subscriber_join', (data) ->
+    console.log data
+
+  new_chatroom.bind 'subscriber_part', (data) ->
+    console.log 'part'
+    console.log data
+
   # userListFetcher = $interval ->
   #   new_chatroom.trigger 'chatroom.get_users'
   # , 5000

@@ -22,6 +22,13 @@ WebsocketRails.setup do |config|
   # * Requires Redis.
   config.synchronize = false
 
+  # if ENV["RAILS_ENV"] == 'production'
+  #   config.redis_options = {
+  #     host: ENV['REDISTOGO_URL'],
+  #     port: ENV['SECRET_KEY_BASE']
+  #   }
+  # end
+
   # Prevent Thin from daemonizing (default is true)
   # config.daemonize = false
 
@@ -41,13 +48,13 @@ WebsocketRails.setup do |config|
   # notified when other clients join and part the channel. If you are
   # using the UserManager, the current_user object will be sent along
   # with the event.
-  # config.broadcast_subscriber_events = true
+  config.broadcast_subscriber_events = true
 
   # Used as the key for the WebsocketRails.users Hash. This method
   # will be called on the `current_user` object in your controller
   # if one exists. If `current_user` does not exist or does not
   # respond to the identifier, the key will default to `connection.id`
-  # config.user_identifier = :id
+  config.user_identifier = :name
 
   # Uncomment and change this option to override the class associated
   # with your `current_user` object. This class will be used when

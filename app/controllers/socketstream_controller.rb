@@ -11,10 +11,12 @@ class SocketstreamController < WebsocketRails::BaseController
       end
     end
 
-    # def client_disconnected
-    #   puts "User disconnected"
-    #   connection_store[:screen_name] = nil
-    #   # connection_store[:screen_name].delete({ name: (user_signed_in? ? current_user.name : 'Guest') })
-    #   # WebsocketRails[:new_chatroom].trigger 'user_left_room', { name: (user_signed_in? ? current_user.name : 'Guest') }
-    # end
+    def new_subscriber
+      puts "new subscriber"
+      puts WebsocketRails.users.inspect 
+    end
+
+    def subscriber_part
+      puts "subscriber left" 
+    end
 end
