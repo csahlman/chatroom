@@ -22,9 +22,9 @@ angular.module('chatroom').controller 'ChatroomCtrl', ['$scope', '$http', '$time
 
   new_chatroom.bind 'subscriber_join', (data) ->
     if data.id?
-      $scope.chatters.push { name: data.name, created_at: data.created_at }
+      $scope.chatters.shift { name: data.name, created_at: data.created_at }
     else
-      $scope.chatters.push { name: 'Guest' }
+      $scope.chatters.shift { name: 'Guest' }
     
   new_chatroom.bind 'subscriber_part', (data) ->
     if data.id?
