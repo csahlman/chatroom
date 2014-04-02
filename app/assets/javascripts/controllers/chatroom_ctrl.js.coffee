@@ -12,20 +12,29 @@ angular.module('chatroom').controller 'ChatroomCtrl', ['$scope', '$http', '$time
 
   new_chatroom = $scope.dispatcher.subscribe('new_chatroom')
 
-  $scope.dispatcher.trigger 'chatroom.new_chatter', { room: 'new_chatroom' }
-
-  $scope.dispatcher.trigger 'chatroom.get_users', { room: 'new_chatroom' }
 
   new_chatroom.bind 'user_list', (data) ->
+    console.log data
     $scope.chatters = data
     $scope.$safeApply()
+    
+  $scope.dispatcher.trigger 'chatroom.get_users'
+
 
   new_chatroom.bind 'subscriber_join', (data) ->
     console.log data
-
+    if data.id?
+      $scope.chatters.push { name: data.name, created_at: data.created_at }
+    else
+      $scope.chatters.push { name: 'Guest', created_at: (new Date()) }
+    
   new_chatroom.bind 'subscriber_part', (data) ->
     console.log 'part'
     console.log data
+    # if data.id?
+    #   $scope.chatters.push { name: data.name, created_at: data.created_at }
+    # else
+    #   $scope.chatters.push { name: 'Guest', created_at: (new Date()) }
 
   # userListFetcher = $interval ->
   #   new_chatroom.trigger 'chatroom.get_users'

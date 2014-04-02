@@ -16,7 +16,7 @@ WebsocketRails::EventMap.describe do
   namespace :chatroom do 
 
     subscribe :new_chatter, 'user_lists#new_user'
-    subscribe :get_users, 'user_lists#show_all_users'
+    subscribe :get_users, 'user_lists#get_users'
 
     namespace :messages do 
       subscribe :create, 'messages#create'
