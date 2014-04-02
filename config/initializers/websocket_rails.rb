@@ -22,10 +22,19 @@ WebsocketRails.setup do |config|
   # * Requires Redis.
   config.synchronize = false
 
+  # if ENV["RAILS_ENV"] == 'production'
+  #   config.redis_options = {
+    
+  #     host: 'redis://rediscloud:3IvAxCGYx0Hw7ZUM@pub-redis-19105.us-east-1-3.3.ec2.garantiadata.com',
+  #     port: '19105'
+
+  #   }
+  # end
+
   if ENV["RAILS_ENV"] == 'production'
-    config.redis_options = {
-      host: 'redis://redistogo:68335963c866199bb31255725b6c146c@barreleye.redistogo.com',
-      port: '11157'
+    uri = URI.parse(ENV["REDISCLOUD_URL"])
+    config.redis_options = { 
+      :host => uri.host, :port => uri.port, :password => uri.password
     }
   end
 
