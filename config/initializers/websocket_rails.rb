@@ -22,12 +22,12 @@ WebsocketRails.setup do |config|
   # * Requires Redis.
   config.synchronize = false
 
-  # if ENV["RAILS_ENV"] == 'production'
-  #   config.redis_options = {
-  #     host: ENV['REDISTOGO_URL'],
-  #     port: ENV['SECRET_KEY_BASE']
-  #   }
-  # end
+  if ENV["RAILS_ENV"] == 'production'
+    config.redis_options = {
+      host: 'redis://redistogo:68335963c866199bb31255725b6c146c@barreleye.redistogo.com',
+      port: '11157'
+    }
+  end
 
   # Prevent Thin from daemonizing (default is true)
   # config.daemonize = false
