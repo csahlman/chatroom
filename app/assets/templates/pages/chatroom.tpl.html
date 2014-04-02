@@ -10,68 +10,39 @@
           </form>
         </div>
         <div class="group-rom" ng-repeat="message in messages">
-          <div class="first-part"></div>
+          <div class="first-part">{{message.user_name}}</div>
           <div class="second-part">{{message.body}}</div>
-          <div class="third-part"></div>
+          <div class="third-part">{{message.created_at | date:'shortTime'}}</div>
         </div>
-        <!-- <div class="group-rom">
-          <div class="first-part odd">Sam Soffes</div>
-          <div class="second-part">Hi Mark, have a minute?</div>
-          <div class="third-part">12:30</div>
-        </div>
-        <div class="group-rom">
-          <div class="first-part">Mark Simmons</div>
-          <div class="second-part">Of course Sam, what you need?</div>
-          <div class="third-part">12:31</div>
-        </div>
-        <div class="group-rom">
-          <div class="first-part odd">Sam Soffes</div>
-          <div class="second-part">I want you examine the new product</div>
-          <div class="third-part">12:32</div>
-        </div>
-        <div class="group-rom">
-          <div class="first-part">Mark Simmons</div>
-          <div class="second-part">Ok, send me the pic</div>
-          <div class="third-part">12:32</div>
-        </div>
-        <div class="group-rom">
-          <div class="first-part odd">Sam Soffes</div>
-          <div class="second-part"><a href="#">product.jpg</a> <span class="text-muted">35.4KB</span> 
-            <p><img class="img-responsive" src="/assets/product.jpg" alt=""></p></div>
-            <div class="third-part">12:32</div>
-          </div>
-          <div class="group-rom">
-            <div class="first-part">Mark Simmons</div>
-            <div class="second-part">Fantastic job, love it :)</div>
-            <div class="third-part">12:32</div>
-          </div>
-          <div class="group-rom last-group">
-            <div class="first-part odd">Sam Soffes</div>
-            <div class="second-part">Thanks!!</div>
-            <div class="third-part">12:33</div>
-          </div> -->
           <footer>
             <div class="chat-txt">
               <input type="text" ng-model="newMessage.body" class="form-control">
             </div>
+            <button class="btn btn-theme" ng-click="createMessage()">Send</button>
             <div class="btn-group hidden-sm hidden-xs">
               <button type="button" class="btn btn-white"><i class="fa fa-meh-o"></i></button>
               <button type="button" class="btn btn-white"><i class=" fa fa-paperclip"></i></button>
             </div>
-            <button class="btn btn-theme" ng-click="createMessage()">Send</button>
           </footer>
         </aside>                  
         <aside class="right-side">
           <div class="user-head">
-            <a href="#" class="chat-tools btn-theme"><i class="fa fa-cog"></i> </a>
+            <a ng-click="closeConnection()" class="chat-tools btn-theme"><i class="fa fa-cog"></i> </a>
             <a href="#" class="chat-tools btn-theme03"><i class="fa fa-key"></i> </a>
           </div>
           <div class="invite-row">
-            <h4 class="pull-left">Team Members</h4>
+            <h4 class="pull-left">{{chatters.length}} Chatters</h4>
             <a href="#" class="btn btn-theme04 pull-right">+ Invite</a>
           </div>
           <ul class="chat-available-user">
-            <li>
+            <li ng-repeat="chatter in chatters">
+              <a>
+                <img class="img-circle" src="/assets/friends/fr-05.jpg" width="32">
+                {{chatter.name}}
+                <!-- <span class="text-muted">1h:08m</span> -->
+              </a>
+            </li>
+            <!-- <li>
               <a href="chat_room.html">
                 <img class="img-circle" src="/assets/friends/fr-02.jpg" width="32">
                 Paul Brown
@@ -105,7 +76,7 @@
                 Frank Arias
                 <span class="text-muted">4h:22m</span>
               </a>
-            </li>
+            </li> -->
           </ul>
         </aside>
       </div>

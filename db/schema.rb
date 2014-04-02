@@ -11,15 +11,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140331141250) do
+ActiveRecord::Schema.define(version: 20140401132020) do
+
+  create_table "messages", force: true do |t|
+    t.text     "body"
+    t.integer  "user_id"
+    t.integer  "room_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "messages", ["room_id"], name: "index_messages_on_room_id"
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id"
+
+  create_table "rooms", force: true do |t|
+    t.string   "title"
+    t.string   "description"
+    t.integer  "messages_count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "name"
     t.string   "password_digest"
-    t.integer  "message_count"
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "messages_count",  default: 0
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

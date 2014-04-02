@@ -10,4 +10,10 @@ angular.module('chatroom').controller 'AppCtrl', ['$scope', '$http', ($scope, $h
 
   $scope.dispatcher = new WebSocketRails('localhost:3000/websocket')
 
+  # $scope.dispatcher.on_open = (data) ->
+  #   console.log data
+
+  $scope.dispatcher.on_close = (data) ->
+    console.log 'connection closed'
+
 ]

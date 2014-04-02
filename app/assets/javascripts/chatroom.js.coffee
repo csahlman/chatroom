@@ -13,6 +13,14 @@ angular.module('chatroom').config ['$httpProvider', ($httpProvider) ->
 angular.module('chatroom').config ['$routeProvider', ($routeProvider) ->
   $routeProvider.when('/',
     controller: 'ChatroomCtrl'
-    templateUrl: "/assets/pages/chatroom.tpl.html"
+    templateUrl: '/assets/pages/chatroom.tpl.html'
   )
+
+  # #('/',
+  #   controller: 'ChatroomCtrl'
+  #   templateUrl: "/assets/pages/chatroom_index.tpl.html"
+  # ).when('/rooms/:id',
+  #   controller: 'ChatroomCtrl'
+  #   templateUrl: "/assets/pages/chatroom_show.tpl.html"
+  # )
 ]

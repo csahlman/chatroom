@@ -51,6 +51,6 @@ angular.module('chatroom').controller 'SessionsCtrl', ['$scope', '$http', '$moda
       url: '/api/sign_out'
       method: "DELETE"
     .success (data) ->
-      $scope.currentUser = null
+      $scope.$parent.currentUser = null
 
 ]
