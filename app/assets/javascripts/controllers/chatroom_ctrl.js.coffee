@@ -14,7 +14,6 @@ angular.module('chatroom').controller 'ChatroomCtrl', ['$scope', '$http', '$time
 
 
   new_chatroom.bind 'user_list', (data) ->
-    console.log data
     $scope.chatters = data
     $scope.$safeApply()
     
@@ -22,19 +21,21 @@ angular.module('chatroom').controller 'ChatroomCtrl', ['$scope', '$http', '$time
 
 
   new_chatroom.bind 'subscriber_join', (data) ->
-    console.log data
     if data.id?
       $scope.chatters.push { name: data.name, created_at: data.created_at }
     else
-      $scope.chatters.push { name: 'Guest', created_at: (new Date()) }
+      $scope.chatters.push { name: 'Guest' }
     
   new_chatroom.bind 'subscriber_part', (data) ->
-    console.log 'part'
-    console.log data
-    # if data.id?
-    #   $scope.chatters.push { name: data.name, created_at: data.created_at }
-    # else
-    #   $scope.chatters.push { name: 'Guest', created_at: (new Date()) }
+    if data.id?
+      result = _.find $scope.chatters, (val) ->
+        val.name == data.name
+      $scope.chatters.splice($scope.chatters.indexOf(result), 1)
+    else
+      result = _.find $scope.chatters, (val) ->
+        val.name == 'Guest'
+      $scope.chatters.splice($scope.chatters.indexOf(result), 1)
+    $scope.$safeApply()
 
   # userListFetcher = $interval ->
   #   new_chatroom.trigger 'chatroom.get_users'

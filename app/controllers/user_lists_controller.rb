@@ -3,7 +3,7 @@ class UserListsController < WebsocketRails::BaseController
   def get_users
     # WebsocketRails[:new_chatroom].subscribers.each { |sub| puts sub.inspect }
     users = WebsocketRails[:new_chatroom].subscribers.map &:user
-    users.map! { |user| user.nil? ? user = { name: 'Guest' } : user }
+    users.map! { |user| user.nil? ? user = { name: 'Guest', created_at: Time.now } : user }
     WebsocketRails[:new_chatroom].trigger :user_list, users
 
   end
